@@ -1,0 +1,54 @@
+{% load static %}
+
+<!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color:red;">-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger"  style="background-color: green;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">ONB</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'register' %}">Register</a>
+        </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'logout_user' %}">Logout</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'login_user' %}">Login</a>
+        </li>
+        {% endif %}
+
+
+
+
+
+        <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Branches
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Ernakulam" target="_blank">Ernakulam</a></li>
+          <li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Malappuram" target="_blank">Malappuram</a></li>
+<!--          <li><hr class="dropdown-divider"></li>-->
+          <li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Kozhikode" target="_blank">Kozhikkode</a></li>
+          <li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Thiruvananthapuram" target="_blank">Trivandrum</a></li>
+          <li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Kottayam" target="_blank">Kottayam</a></li>
+        </ul>
+      </li>
+    </ul>
+
+
+      </ul>
+
+    </div>
+  </div>
+</nav>

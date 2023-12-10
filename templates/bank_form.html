@@ -1,0 +1,98 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row">
+<!--            <div class="col-md-6">-->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+                <div class="form-container"><br><br>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <input type="text" name="name" placeholder="Enter your name" required><br>
+                        <input type="date" name="dob" placeholder="dob" required><br>
+                        <input type="number" name="age" placeholder="Enter age" required><br>
+
+                        <label style="display: inline-block;"><input type="radio" name="gender" value="Male"> Male</label>
+                        <label style="display: inline-block;"><input type="radio" name="gender" value="Female">Female</label>
+
+                        <label style="display: inline-block;"><input type="radio" name="gender" value="Other"><br>Other</label>
+                        <input type="number" name="phone_number" placeholder="Enter Phone number" required><br>
+                        <input type="email" name="email" placeholder="Enter Email" required><br>
+                </div>
+            </div>
+<!--            <div class="col-md-6">-->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+                <div class="form-container"><br><br>
+                    <input type="text" name="address" placeholder="Enter address" required><br>
+                    <select id="district" name="district" onchange="updateBranches()">
+                            <option value="valuee">Select your District</option>
+                            <option value="Ernakulam">Ernakulam</option>
+                            <option value="Malappuram">Malappuram</option>
+                            <option value="Kozhikode">Kozhikode</option>
+                    </select><br>
+
+                    <select id="branch" name="branch">
+                            <option value="branch">Select your Branch</option>
+                    </select><br>
+                    <!-- Checkboxes for materials -->
+                    <div class="checkbox-label">
+                        <label for="debitCard">DebitCard</label>
+                        <input type="checkbox" name="materials" value="debitcard" id="debitCard" class="checkbox-label">
+                    </div>
+
+                    <div class="checkbox-label">
+                        <label for="creditCard">CreditCard</label>
+                        <input type="checkbox" name="materials" value="creditcard" id="creditCard" class="checkbox-label">
+                    </div>
+
+                    <div class="checkbox-label">
+                        <label for="chequeBook">ChequeBook</label>
+                        <input type="checkbox" name="materials" value="cheque" id="chequeBook" class="checkbox-label">
+                    </div>
+
+                    <input type="submit" value="submit" style="background-color:#b52831;cursor:pointer;margin-top:30px;"><br>
+<!--                    <input type="submit" value="submit" style="background-color:#b52831;cursor:pointer;"><br>-->
+
+                </div>
+            </div>
+        </form>
+  </div>
+</div>
+
+<script>
+function updateBranches() {
+    var districtDropdown = document.getElementById('district');
+    var branchDropdown = document.getElementById('branch');
+
+    // Clear existing options
+    branchDropdown.innerHTML = '<option value="branch">Select your Branch</option>';
+
+    // Add new options based on the selected district
+    if (districtDropdown.value === 'Ernakulam') {
+        addBranchOption('Aluva');
+        addBranchOption('Edapally');
+        addBranchOption('Other Ernakulam Branches');
+    } else if (districtDropdown.value === 'Malappuram') {
+        addBranchOption('Branch A');
+        addBranchOption('Branch B');
+        addBranchOption('Other Malappuram Branches');
+    } else if (districtDropdown.value === 'Kozhikode') {
+        addBranchOption('Branch X');
+        addBranchOption('Branch Y');
+        addBranchOption('Other Kozhikode Branches');
+    }
+}
+
+function addBranchOption(branchName) {
+    var branchDropdown = document.getElementById('branch');
+    var option = document.createElement('option');
+    option.value = branchName;
+    option.text = branchName;
+    branchDropdown.appendChild(option);
+}
+</script>
+
+
+
+{% endblock %}

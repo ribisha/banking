@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="banner-container">
+<div class="banner">
+
+
+    <img class="slide" src="{% static 'img/banner.jpg' %}" alt="Banner 1">
+        <img class="slide" src="{% static 'img/banner3.jpg' %}">
+        <img class="slide" src="{% static 'img/banner2.jpg' %}">
+
+
+</div>
+</div>
+<div>
+    <center>
+    <a href="login_user"><button type="submit" class="btn btn-danger" style="margin-top:5%; width:200px; height:50px;">Start Now</button> </a>
+    </center>
+</div>
+<script>
+    let currentIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+
+    function showNextSlide() {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        updateBannerTransform();
+    }
+
+    function updateBannerTransform() {
+        const translationValue = -currentIndex * 100 + '%';
+        document.querySelector('.banner').style.transform = 'translateX(' + translationValue + ')';
+    }
+
+    // Change slide every 5 seconds (adjust as needed)
+    setInterval(showNextSlide, 5000);
+</script>
+
+{% endblock %}

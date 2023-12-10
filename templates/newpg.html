@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<h1 style="text-align:center; margin-top:13%;"><b>Hi {{user.username}},  Welcome to ONB</b></h1>
+
+<div>
+    <center>
+        <a href="{% url 'bankform' %}"><button type="submit" class="btn btn-danger" style="margin-top:5%; width:200px; height:50px;">Start Now</button> </a>
+
+    </center>
+</div>
+
+
+{% endblock %}
