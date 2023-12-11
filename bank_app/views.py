@@ -34,15 +34,16 @@ def login_user(request):
     if request.method=='POST':
         username=request.POST.get('username')
         password=request.POST.get('password')
-        user=auth.authenticate(username=username, password=password)
-        if user is not None:
-            auth.login(request, user)
-            return redirect('newpg')
+        if User.objects.filter(username=username).exists():
+            user=auth.authenticate(username=username, password=password)
+            if user is not None:
+                auth.login(request, user)
+                return redirect('newpg')
+            else:
+                messages.info(request, "Incorrect Password")
         else:
-            messages.info(request, 'Invalid credentials')
+            messages.info(request, 'Invalid,Please create an account')
             return redirect('login_user')
-
-
     return render(request,'login.html')
 
 def newpg(request):
@@ -91,3 +92,4 @@ def bankform(request):
 def success(request):
 
     return render(request,'success.html')
+
