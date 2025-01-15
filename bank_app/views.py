@@ -56,7 +56,7 @@ def logout_user(request):
 
 def bankform(request):
     if request.method=='POST':
-        print("Inside POST block")
+        # print("Inside POST block")
         name=request.POST.get('name')
         dob=request.POST.get('dob')
         age=request.POST.get('age')
@@ -66,10 +66,10 @@ def bankform(request):
         address=request.POST.get('address')
         district=request.POST.get('district')
         branch=request.POST.get('branch')
-        # Retrieve materials as a list
+      
         materials_list=request.POST.getlist('materials')
 
-        # Join the list into a comma-separated string
+       
         materials=', '.join(materials_list)
 
         customer=Customer.objects.create(
